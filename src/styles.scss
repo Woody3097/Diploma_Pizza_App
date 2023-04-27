@@ -1,1 +1,46 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+
+  -webkit-tap-highlight-color: transparent;
+
+  &::-webkit-scrollbar {
+    display: none !important;
+  }
+}
+
+html, body{
+  height: 100%;
+}
+
+button {
+  border: none;
+}
+
+input, input:before, input:after {
+  -webkit-user-select: initial;
+  -moz-user-select: initial;
+  -ms-user-select: initial;
+  user-select: initial;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active{
+  -webkit-box-shadow: 0 0 0 30px #1D1D1D inset !important;
+}
+
+input:-webkit-autofill{
+  -webkit-text-fill-color: white !important;
+}
+
+span, div, p, a {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
