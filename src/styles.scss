@@ -105,3 +105,27 @@ span, div, p, a {
 .w100 {
   width: 100%;
 }
+
+.pointer {
+  cursor: pointer;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.input {
+  border-radius: 16px;
+  border: 2px solid darkorange;
+  padding: 12px;
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+.button {
+  border-radius: 20px;
+  background: darkorange;
+  color: white;
+  padding: 12px;
+  cursor: pointer;
+}
