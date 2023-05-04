@@ -3,7 +3,9 @@
   <div style="margin-bottom: 16px" class="flex jcsb aic">
     <h1>PIZZA DAY</h1>
 
-    <mat-icon class="pointer" routerLink="/sign-up">perm_identity</mat-icon>
+    <mat-icon *ngIf="!isAuth" class="pointer" routerLink="/sign-up">perm_identity</mat-icon>
+
+    <div *ngIf="isAuth" routerLink="/profile" class="flex aic jcc pointer" style="background: darkorange; width: 24px;height: 24px;color: white; border-radius: 50%"><span style="margin-top: 1px">N</span></div>
   </div>
 
   <input class="w100 home__search" type="text" placeholder="Пошук">

@@ -1,0 +1,18 @@
+<div class="profile">
+  <div class="flex aic jcsb" style="margin-bottom: 16px">
+    <mat-icon class="pointer" routerLink="/home">arrow_back</mat-icon>
+
+    <mat-icon class="pointer" routerLink="/sign-in">exit_to_app</mat-icon>
+  </div>
+  <h1>Вітаємо, <span style="color: darkorange">Олександре!</span></h1>
+
+  <h2 style="margin: 16px 0">Ваші замовлення</h2>
+
+  <div class="flex fdc">
+    <div *ngFor="let i of [1,2,3,4,5,6,7]" class="w100 flex fdc" style="border-radius: 20px;min-height: 100px; border: 2px solid darkorange;padding: 16px;margin-bottom: 16px">
+      <h3>Замовлення №1</h3>
+      <span style="margin: 16px 0">Пепероні, Чікен чіз, Мясний мікс вайт</span>
+      <span style="align-self: flex-end">Сума: <span style="color: darkorange">370 грн</span></span>
+    </div>
+  </div>
+</div>
