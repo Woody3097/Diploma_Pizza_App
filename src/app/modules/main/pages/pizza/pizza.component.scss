@@ -1,0 +1,25 @@
+.pizza {
+  & * {
+    color: white;
+  }
+  &__img {
+    padding: 10px;
+    overflow: hidden;
+    width: 60%;
+    margin: 0 auto;
+    & img {
+      max-width: 100%;
+      object-fit: cover;
+    }
+  }
+  &__button {
+    margin: 20px auto;
+    background: #1d1d1d;
+    border-radius: 9px;
+    padding: 7px 10px;
+    text-align: center;
+    display: block;
+    width: 200px;
+    font-size: 16px;
+  }
+}

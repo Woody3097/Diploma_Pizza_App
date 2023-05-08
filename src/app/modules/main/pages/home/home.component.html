@@ -12,12 +12,15 @@
 
   <h2 style="margin: 16px 0">Наявні піци</h2>
   <div class="home__pizza-list flex">
-    <div *ngFor="let a of [1,2,3]" class="flex fdc aic home__pizza-card">
+    <div routerLink="/pizza" *ngFor="let a of [1,2,3]" class="flex fdc aic home__pizza-card">
       <div class="home__pizza-card-image">
         <img src="assets/images/peperoni.png">
       </div>
-      <span style="margin: 16px 0;align-self: flex-start">Пепероні</span>
-      <span style="align-self: flex-start">200 грн</span>
+      <span style="margin: 16px 0;align-self: flex-start;font-size: 26px;">Пепероні</span>
+      <div class="w100 flex aic jcsb">
+        <span>200 грн</span>
+        <span class="pointer home__pizza-cart" style="color: darkorange">В корзину</span>
+      </div>
     </div>
 
   </div>

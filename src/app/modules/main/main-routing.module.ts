@@ -5,6 +5,7 @@ import { MainComponent } from './main.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { PizzaComponent } from './pages/pizza/pizza.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
       {
         path: 'profile',
         component: ProfileComponent,
+      },
+      {
+        path: 'pizza',
+        component: PizzaComponent,
       },
       {
         path: '**',
