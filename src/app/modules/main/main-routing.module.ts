@@ -6,6 +6,8 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { PizzaComponent } from './pages/pizza/pizza.component';
+import { CartComponent } from './pages/cart/cart.component';
+import { PizzaBuilderComponent } from './pages/pizza-builder/pizza-builder.component';
 
 const routes: Routes = [
   {
@@ -31,6 +33,14 @@ const routes: Routes = [
       {
         path: 'pizza',
         component: PizzaComponent,
+      },
+      {
+        path: 'cart',
+        component: CartComponent,
+      },
+      {
+        path: 'pizza-builder',
+        component: PizzaBuilderComponent,
       },
       {
         path: '**',

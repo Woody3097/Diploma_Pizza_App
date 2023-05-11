@@ -1,0 +1,41 @@
+import { Component, Input } from '@angular/core';
+
+@Component({
+  selector: 'app-pizza-builder-block',
+  templateUrl: './pizza-builder-block.component.html',
+  styleUrls: ['./pizza-builder-block.component.scss'],
+})
+export class PizzaBuilderBlockComponent {
+  @Input() title!: string;
+  @Input() subtitle?: string;
+  @Input() set options(options_: any[]) {
+    if (options_?.length) {
+      this.options_ = options_.map((el) => ({ ...el, selected: false }));
+      this.options_[0].selected = true;
+    }
+  }
+  @Input() maxSelect: number = 1;
+
+  options_: any[] = [];
+  select(index: number): void {
+    if (this.maxSelect === 1) {
+      this.options_.forEach((el) => (el.selected = false));
+      this.options_[index].selected = true;
+    } else {
+      if (this.options_[index].selected) {
+        this.options_[index].selected = false;
+        return;
+      }
+
+      const selectedCount = this.options_.reduce(
+        (acc, current) => acc + (current.selected as number),
+        0
+      );
+      if (selectedCount < this.maxSelect) {
+        this.options_[index].selected = true;
+      } else {
+        alert('Ти можеш вибрати тільки ' + this.maxSelect);
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+<div class="flex fdc">
+  <div class="flex aic" style="margin-bottom: 16px;">
+    <span style="font-size: 20px;line-height: 18px;color: #24262F;margin-right: 16px">{{ title }}</span>
+    <span style="font-size: 14px;" *ngIf="subtitle">{{ subtitle }}</span>
+  </div>
+
+
+  <div class="flex" style="flex-wrap: wrap; gap: 16px">
+    <div (click)="select(i)" *ngFor="let option of options_; let i = index" [class.block-selected]="option.selected" class="flex fdc aic block  pointer">
+      <span style="font-weight: bold; font-size: 18px">{{ option.name }}</span>
+      <span style="color: darkorange; font-size: 14px" *ngIf="option.cost">{{ option.cost }}</span>
+    </div>
+  </div>
+</div>

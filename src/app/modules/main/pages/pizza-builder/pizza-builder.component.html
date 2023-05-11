@@ -1,1 +1,22 @@
-<p>pizza-builder works!</p>
+<img class="w100" style="object-fit: cover; border-radius: 20px;" src="assets/images/BG.png">
+<div class="builder" style="padding: 30px 20px">
+
+  <div >
+    <h2>Створи свою власну піцу!</h2>
+    <p>Для створення піци вибери розмір, соус, начинку, тип тіста. Для вибору представлені 4 розміра, 2 типа тіста, 10 начинок, 3 соуса</p>
+
+    <app-pizza-builder-block style="display: block; margin-top: 20px" [title]="'Розмір'" [maxSelect]="1" [options]="sizeOptions"></app-pizza-builder-block>
+
+    <app-pizza-builder-block style="display: block; margin-top: 20px" [title]="'Тип тіста'" [maxSelect]="1" [options]="crustOptions"></app-pizza-builder-block>
+
+    <app-pizza-builder-block style="display: block; margin-top: 20px" [title]="'Соус'" [maxSelect]="1" [options]="sauceOptions"></app-pizza-builder-block>
+
+    <app-pizza-builder-block style="display: block; margin-top: 20px" [title]="'Начинка'" [subtitle]="'Кожна начинка + 20 грн'" [maxSelect]="4" [options]="toppingsOptions"></app-pizza-builder-block>
+
+  </div>
+
+  <button style="padding: 20px;background: #24262F; border-radius: 30px; margin-top: 20px" class="flex aic jcsb w100 pointer">
+    <span style="color: darkorange;font-size: 18px">Додати до корзини</span>
+    <span style="color: white; font-size: 16px">400 грн</span>
+  </button>
+</div>

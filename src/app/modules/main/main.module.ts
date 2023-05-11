@@ -11,9 +11,23 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { PizzaComponent } from './pages/pizza/pizza.component';
 import { PizzaBuilderComponent } from './pages/pizza-builder/pizza-builder.component';
 import { CartComponent } from './pages/cart/cart.component';
+import { CartItemComponent } from './pages/cart/cart-item/cart-item.component';
+import { FormsModule } from '@angular/forms';
+import { PizzaBuilderBlockComponent } from './pages/pizza-builder/pizza-builder-block/pizza-builder-block.component';
 
 @NgModule({
-  declarations: [MainComponent, HomeComponent, SignUpComponent, SignInComponent, ProfileComponent, PizzaComponent, PizzaBuilderComponent, CartComponent],
-  imports: [CommonModule, MainRoutingModule, MatIconModule],
+  declarations: [
+    MainComponent,
+    HomeComponent,
+    SignUpComponent,
+    SignInComponent,
+    ProfileComponent,
+    PizzaComponent,
+    PizzaBuilderComponent,
+    CartComponent,
+    CartItemComponent,
+    PizzaBuilderBlockComponent,
+  ],
+  imports: [CommonModule, MainRoutingModule, MatIconModule, FormsModule],
 })
 export class MainModule {}

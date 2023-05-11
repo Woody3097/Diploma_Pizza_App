@@ -1,0 +1,22 @@
+<div style="border-bottom: 1px solid #F1F1F5;padding: 20px 0" class="flex aic jcsb">
+  <div class="flex aic">
+    <img width="80" height="80" src="assets/images/peperoni.png" style="margin-right: 16px">
+    <div class="flex fdc">
+      <span style="margin-bottom: 5px">Пепероні</span>
+      <span style="color: darkorange">200 грн</span>
+    </div>
+
+  </div>
+
+  <div class="flex aic">
+    <div style="background: #F3F5F7;border: 1px solid #F1F1F5;border-radius: 50%;width: 36px; height: 36px;" class="flex aic jcc pointer">
+      <mat-icon style="color: #979899" (click)="value = value - 1">remove</mat-icon>
+    </div>
+
+    <input style="margin: 0 16px; font-size: 16px; background: none; border: none; text-align: center" min="0" max="100" type="number" [(ngModel)]="value">
+
+    <div style="background: darkorange;border-radius: 50%;width: 36px; height: 36px;" class="flex aic jcc pointer">
+      <mat-icon style="color: white" (click)="value = value + 1">add</mat-icon>
+    </div>
+  </div>
+</div>

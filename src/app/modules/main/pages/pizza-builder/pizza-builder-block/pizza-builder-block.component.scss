@@ -1,0 +1,21 @@
+.block {
+  flex-grow: 1;
+  padding: 10px;
+  border-radius: 12px;
+  border: 2px solid #979899;
+  color: #979899;
+  transition: all .4s;
+  &:not(.block-selected):hover {
+    background: darkorange;
+    border-color: darkorange;
+    color: white !important;
+    & span  {
+      color: white !important;
+    }
+  }
+}
+
+.block-selected {
+  border-color: darkorange !important;
+  color: #24262F !important;
+}
