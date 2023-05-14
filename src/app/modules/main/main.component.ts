@@ -5,6 +5,7 @@ import {
   Router,
   UrlSegment,
 } from '@angular/router';
+import { ApiService } from './api/api.service';
 
 @Component({
   selector: 'app-main',

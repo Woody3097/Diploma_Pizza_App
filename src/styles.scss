@@ -117,6 +117,10 @@ mat-icon {
   transition: all .4s;
 }
 
+.disabled {
+  opacity: 0.5;
+}
+
 mat-icon:hover {
   transform: scale(1.1);
 }
