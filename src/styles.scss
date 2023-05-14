@@ -54,9 +54,8 @@ span, div, p, a {
 }
 
 .container {
-  max-width: 500px;
+  max-width: 1024px;
   margin: 0 auto;
-  border-radius: 20px;
 }
 
 .flex {
@@ -133,20 +132,56 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
 
+.mat-mdc-checkbox .mdc-checkbox .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background, .mat-mdc-checkbox .mdc-checkbox .mdc-checkbox__native-control:enabled:indeterminate~.mdc-checkbox__background, .mat-mdc-checkbox .mdc-checkbox .mdc-checkbox__native-control[data-indeterminate=true]:enabled~.mdc-checkbox__background {
+  background: darkorange !important;
+  border-color: darkorange !important;
+}
+
 @media screen and (max-width: 500px) {
   .container, .pizza {
     border-radius: 0 !important;
   }
-  html, body {
-    background: white !important;
+  .header__auth {
+    display: block !important;
+  }
+  .header__navi {
+    display: none;
+  }
+  .home {
+    padding: 10px !important;
+  }
+  .home__pizza-card-image {
+    height: 130px !important;
+    width: 130px !important;
   }
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (min-width: 500px) {
+  .footer {
+    display: none;
+  }
+  .home__header {
+    display: none;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
   .home__pizza-card {
-    flex: 0 1 100% !important;
+    flex-basis: 100% !important;
   }
-  .home__pizza-card-image {
-    height: 200px !important;
+  .home__nav {
+    flex-direction: column;
+    align-items: flex-start;
   }
+  .home__search {
+    max-width: 100% !important;
+  }
+  .header {
+    justify-content: space-between !important;
+  }
+  .header__navi {
+    width: 50% !important;
+  }
+
 }

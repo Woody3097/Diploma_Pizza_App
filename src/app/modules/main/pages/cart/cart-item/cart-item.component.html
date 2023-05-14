@@ -1,4 +1,4 @@
-<div style="border-bottom: 1px solid #F1F1F5;padding: 20px 0" class="flex aic jcsb">
+<div style="padding: 20px 0" class="flex aic jcsb cart-item">
   <div class="flex aic">
     <img width="80" height="80" src="assets/images/peperoni.png" style="margin-right: 16px">
     <div class="flex fdc">
@@ -8,7 +8,7 @@
 
   </div>
 
-  <div class="flex aic">
+  <div *ngIf="!external" class="flex aic">
     <div style="background: #F3F5F7;border: 1px solid #F1F1F5;border-radius: 50%;width: 36px; height: 36px;" class="flex aic jcc pointer">
       <mat-icon style="color: #979899" (click)="value = value - 1">remove</mat-icon>
     </div>
@@ -18,5 +18,9 @@
     <div style="background: darkorange;border-radius: 50%;width: 36px; height: 36px;" class="flex aic jcc pointer">
       <mat-icon style="color: white" (click)="value = value + 1">add</mat-icon>
     </div>
+  </div>
+
+  <div *ngIf="external">
+    <span>2 піци : 400 грн</span>
   </div>
 </div>

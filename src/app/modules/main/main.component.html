@@ -1,12 +1,32 @@
-<div class="container" style="padding-bottom: 80px">
-  <router-outlet></router-outlet>
-  <div class="footer flex aic jcsa">
-    <mat-icon class="pointer" routerLink="/home" style="color: darkorange">home</mat-icon>
+<div class="w100 flex fdc">
+  <div style="background: white; padding: 10px; width: 100vw; display: flex" *ngIf="isHome" class="flex w100 aic jcsa header">
+    <img style="height: 60px;" src="assets/images/pizza.png">
+    <div style="width: 25%" class="flex aic jcsa header__navi">
+      <mat-icon class="pointer" routerLink="/home" style="color: darkorange">home</mat-icon>
 
-    <mat-icon class="pointer" routerLink="/pizza-builder" style="color: darkorange">local_pizza</mat-icon>
+      <mat-icon class="pointer" routerLink="/pizza-builder" style="color: darkorange">local_pizza</mat-icon>
 
-    <mat-icon class="pointer" routerLink="/cart" style="color: darkorange">shopping_cart</mat-icon>
+      <mat-icon class="pointer" routerLink="/cart" style="color: darkorange">shopping_cart</mat-icon>
 
-    <mat-icon class="pointer" routerLink="/profile" style="color: darkorange">perm_identity</mat-icon>
+      <mat-icon class="pointer" routerLink="/profile" style="color: darkorange">perm_identity</mat-icon>
+    </div>
+
+
+    <div style="display: none" class="header__auth">
+      <mat-icon *ngIf="!isAuth" style="color: darkorange" class="pointer" routerLink="/sign-up">perm_identity</mat-icon>
+      <div *ngIf="isAuth" routerLink="/profile" class="flex aic jcc pointer" style="background: darkorange; width: 24px;height: 24px;color: white; border-radius: 50%"><span style="margin-top: 1px">N</span></div>
+    </div>
+  </div>
+  <div class="container" style="padding-bottom: 80px">
+    <router-outlet></router-outlet>
+    <div class="footer flex aic jcsa">
+      <mat-icon class="pointer" routerLink="/home" style="color: darkorange">home</mat-icon>
+
+      <mat-icon class="pointer" routerLink="/pizza-builder" style="color: darkorange">local_pizza</mat-icon>
+
+      <mat-icon class="pointer" routerLink="/cart" style="color: darkorange">shopping_cart</mat-icon>
+
+      <mat-icon class="pointer" routerLink="/profile" style="color: darkorange">perm_identity</mat-icon>
+    </div>
   </div>
 </div>

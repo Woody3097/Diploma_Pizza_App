@@ -1,11 +1,14 @@
 .pizza {
   & * {
-    color: white;
+    color: #1d1d1d;
+  }
+  button {
+    color: white !important;
   }
   &__img {
     padding: 10px;
     overflow: hidden;
-    width: 60%;
+    width: 50%;
     margin: 0 auto;
     & img {
       max-width: 100%;

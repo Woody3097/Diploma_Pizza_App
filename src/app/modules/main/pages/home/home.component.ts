@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { PizzaCrudComponent } from './pizza-crud/pizza-crud.component';
+import { PizzaAddComponent } from './pizza-add/pizza-add.component';
 
 @Component({
   selector: 'app-home',
@@ -6,5 +9,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
-  isAuth: boolean = !!localStorage.getItem('token');
+  constructor(private _bottomSheet: MatBottomSheet) {}
+
+  openBottomSheet(event: any): void {
+    event.stopImmediatePropagation();
+    this._bottomSheet.open(PizzaCrudComponent);
+  }
+
+  openAddPizzaModal(): void {
+    this._bottomSheet.open(PizzaAddComponent);
+  }
 }

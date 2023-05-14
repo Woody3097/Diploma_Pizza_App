@@ -7,4 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class CartItemComponent {
   @Input() value: number = 1;
+  @Input() external: boolean = false;
 }

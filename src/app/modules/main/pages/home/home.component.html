@@ -1,26 +1,28 @@
 <div class="home flex fdc">
 
-  <div style="margin-bottom: 16px" class="flex jcsb aic">
-
-    <img style="height: 60px;" src="assets/images/pizza.png">
-
-    <mat-icon *ngIf="!isAuth" class="pointer" routerLink="/sign-up">perm_identity</mat-icon>
-
-    <div *ngIf="isAuth" routerLink="/profile" class="flex aic jcc pointer" style="background: darkorange; width: 24px;height: 24px;color: white; border-radius: 50%"><span style="margin-top: 1px">N</span></div>
+  <div style="margin-bottom: 16px" class="home__nav flex aic jcsb">
+    <h2 style="margin: 16px 0">Наявні піци</h2>
+    <input style="max-width: 500px" class="w100 home__search" type="text" placeholder="Пошук">
   </div>
 
-  <input class="w100 home__search" type="text" placeholder="Пошук">
-
-  <h2 style="margin: 16px 0">Наявні піци</h2>
   <div class="home__pizza-list flex">
-    <div routerLink="/pizza" *ngFor="let a of [1,2,3]" class="flex fdc aic home__pizza-card">
+    <div (click)="openAddPizzaModal()" class="flex fdc jcc aic home__pizza-card pointer">
+      <h1>Додати нову піцу</h1>
+    </div>
+
+    <div routerLink="/pizza" *ngFor="let a of [1,2,3]" class="flex fdc aic home__pizza-card pointer">
       <div class="home__pizza-card-image">
         <img src="assets/images/peperoni.png">
       </div>
-      <span style="margin: 16px 0;align-self: flex-start;font-size: 26px;">Пепероні</span>
-      <div class="w100 flex aic jcsb">
-        <span>200 грн</span>
-        <span class="pointer home__pizza-cart" style="color: darkorange">В корзину</span>
+      <div class="pizza__pizza-info">
+        <div class="w100 flex aic jcsb">
+          <span style="margin: 16px 0;align-self: flex-start;font-size: 22px;">Пепероні</span>
+          <mat-icon (click)="openBottomSheet($event)" class="pointer" style="color: darkorange">settings</mat-icon>
+        </div>
+        <div class="home__pizza-price w100 flex aic jcsb">
+          <span>200 грн</span>
+          <span class="pointer home__pizza-cart" ><mat-icon style="color: darkorange">add_shopping_cart</mat-icon></span>
+        </div>
       </div>
     </div>
 

@@ -8,6 +8,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { PizzaComponent } from './pages/pizza/pizza.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { PizzaBuilderComponent } from './pages/pizza-builder/pizza-builder.component';
+import { OrderingComponent } from './pages/ordering/ordering.component';
+import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
 
 const routes: Routes = [
   {
@@ -41,6 +43,14 @@ const routes: Routes = [
       {
         path: 'pizza-builder',
         component: PizzaBuilderComponent,
+      },
+      {
+        path: 'ordering',
+        component: OrderingComponent,
+      },
+      {
+        path: 'admin',
+        component: AdminPanelComponent,
       },
       {
         path: '**',
