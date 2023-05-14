@@ -113,6 +113,14 @@ span, div, p, a {
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+mat-icon {
+  transition: all .4s;
+}
+
+mat-icon:hover {
+  transform: scale(1.1);
+}
+
 .input {
   border-radius: 16px;
   border: 2px solid darkorange;
@@ -163,7 +171,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   .home__header {
     display: none;
   }
-
 }
 
 @media screen and (max-width: 768px) {
@@ -183,5 +190,4 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   .header__navi {
     width: 50% !important;
   }
-
 }

@@ -21,7 +21,7 @@
         </div>
         <div class="home__pizza-price w100 flex aic jcsb">
           <span>200 грн</span>
-          <span class="pointer home__pizza-cart" ><mat-icon style="color: darkorange">add_shopping_cart</mat-icon></span>
+          <span (click)="$event.stopImmediatePropagation()" class="pointer home__pizza-cart"><mat-icon style="color: darkorange">add_shopping_cart</mat-icon></span>
         </div>
       </div>
     </div>

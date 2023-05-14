@@ -1,1 +1,36 @@
-<p>pizza-add works!</p>
+<div style="padding: 20px" class="flex fdc">
+  <input type="text" class="input" placeholder="Назва">
+  <input style="margin-top: 16px" type="number" min="1" class="input" placeholder="Ціна">
+  <input style="margin-top: 16px" type="number" min="1" class="input" placeholder="Час приготування (хв)">
+  <input style="margin-top: 16px" type="number" min="1" class="input" placeholder="Кілокалорії (ккал)">
+  <input style="margin-top: 16px" type="number" min="1" class="input" placeholder="Вага (грам)">
+  <label style="margin-top: 16px" for="size">Розмір</label>
+  <select name="size" id="size" style="margin-top: 5px" class="input pointer">
+    <option value="20 см">20 см</option>
+    <option value="25 см">25 см</option>
+    <option value="30 см">30 см</option>
+    <option value="40 см">40 см</option>
+  </select>
+
+  <label style="margin-top: 16px" for="sauce">Соус</label>
+  <select name="sauce" id="sauce" style="margin-top: 5px" class="input pointer">
+    <option value="Барбек'ю">Барбек'ю</option>
+    <option value="Томатний">Томатний</option>
+    <option value="Часниковий">Часниковий</option>
+  </select>
+
+  <label style="margin-top: 16px" for="topping">Начинка</label>
+  <select (change)="addTopping($any($event.target).value)" name="topping" id="topping" style="margin-top: 5px" class="input pointer">
+    <option disabled selected> -- Виберіть начинку -- </option>
+    <option value="Барбек'ю">Барбек'ю</option>
+    <option value="Томатний">Томатний</option>
+  </select>
+
+  <div class="flex aic" style="flex-wrap: wrap">
+    <span class="flex aic" *ngFor="let a of toppings;let i = index">{{ a }} <mat-icon class="pointer" (click)="removeTopping(i)">close</mat-icon></span>
+  </div>
+
+  <input style="margin-top: 16px" type="text" class="input" placeholder="Опис">
+
+  <button class="button" (click)="createPizza()" style="margin-top: 16px">Створити</button>
+</div>
