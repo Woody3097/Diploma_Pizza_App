@@ -5,20 +5,24 @@
   </div>
 
   <div class="flex fdc">
-    <input class="input" style="margin-top: 16px" type="text" placeholder="Ім'я отримувача">
+    <input [(ngModel)]="name" class="input" style="margin-top: 16px" type="text" placeholder="Ім'я отримувача">
 
-    <input class="input" style="margin-top: 16px" type="text" placeholder="Місто">
+    <input [(ngModel)]="phone" class="input" style="margin-top: 16px" type="text" placeholder="Телефон">
 
-    <input class="input" style="margin-top: 16px" type="text" placeholder="Вулиця та будинок">
+    <input [(ngModel)]="city" class="input" style="margin-top: 16px" type="text" placeholder="Місто">
 
-    <input class="input" style="margin-top: 16px" type="datetime-local"  value="Дата та час">
+    <input [(ngModel)]="address" class="input" style="margin-top: 16px" type="text" placeholder="Вулиця та будинок">
 
-    <mat-checkbox style="margin-top: 16px">Передзвонити для підтвердження замовлення</mat-checkbox>
+    <input [(ngModel)]="time" class="input" style="margin-top: 16px" type="datetime-local">
 
-    <app-cart-item [external]="true"></app-cart-item>
+    <mat-checkbox [(ngModel)]="callback" style="margin-top: 16px">Передзвонити для підтвердження замовлення</mat-checkbox>
 
-    <app-cart-item [external]="true"></app-cart-item>
+<!--    <app-cart-item [external]="true"></app-cart-item>-->
 
-    <button class="cart__button pointer" routerLink="/ordering">Замовити</button>
+<!--    <app-cart-item [external]="true"></app-cart-item>-->
+
+    <span style="display: block; margin-top: 16px; font-size: 18px">Сума замовлення: <span style="color: darkorange">{{ total }} грн </span></span>
+
+    <button class="cart__button pointer" *ngIf="name.length && phone.length && city.length && address.length && time.length" (click)="makeOrder()" routerLink="/ordering">Замовити</button>
   </div>
 </div>

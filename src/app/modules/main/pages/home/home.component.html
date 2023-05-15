@@ -12,7 +12,7 @@
     <ng-container *ngIf="(pizzas$ | async) as pizzas">
       <div [routerLink]="'/pizza/' + a.id" *ngFor="let a of pizzas" class="flex fdc aic home__pizza-card pointer">
         <div class="home__pizza-card-image">
-          <img [src]="'assets/images/' + (a.url || 'peperoni.png')">
+          <img [src]="'assets/images/' + (a.url || 'no-pizza.png')">
         </div>
         <div class="pizza__pizza-info">
           <div class="w100 flex aic jcsb">

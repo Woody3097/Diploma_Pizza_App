@@ -2,14 +2,13 @@
   <div class="flex aic jcsb" style="margin-bottom: 16px">
     <mat-icon class="pointer" routerLink="/home">arrow_back</mat-icon>
 
-    <mat-icon class="pointer" routerLink="/sign-in">exit_to_app</mat-icon>
+    <mat-icon class="pointer" routerLink="/sign-in" (click)="signOut()">exit_to_app</mat-icon>
   </div>
-  <h1>Вітаємо, <span style="color: darkorange">Олександре!</span></h1>
+  <ng-container *ngIf="orders$ | async as orders;">
+    <h2 style="margin: 16px 0">Ваші замовлення</h2>
 
-  <h2 style="margin: 16px 0">Ваші замовлення</h2>
-
-  <div class="flex fdc">
-    <app-order-card></app-order-card>
-    <app-order-card></app-order-card>
-  </div>
+    <div class="flex fdc">
+      <app-order-card [no]="i + 1" [order]="order" *ngFor="let order of orders; let i = index"></app-order-card>
+    </div>
+  </ng-container>
 </div>

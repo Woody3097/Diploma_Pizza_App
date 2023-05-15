@@ -1,6 +1,6 @@
 <div *ngIf="pizza" style="padding: 20px 0" class="flex aic jcsb cart-item">
   <div class="flex aic">
-    <img width="80" height="80" [src]="'assets/images/' + (pizza.url || 'peperoni.png')" style="margin-right: 16px">
+    <img width="80" height="80" [src]="'assets/images/' + (pizza.url || 'no-pizza.png')" style="margin-right: 16px">
     <div class="flex fdc">
       <span style="margin-bottom: 5px">{{ pizza.name }}</span>
       <span style="color: darkorange">{{ pizza.price }} грн</span>
@@ -23,6 +23,6 @@
   </div>
 
   <div *ngIf="external">
-    <span>2 піци : 400 грн</span>
+    <span>{{ pizza.count }} піци : {{ pizza.count * +pizza.price }} грн</span>
   </div>
 </div>

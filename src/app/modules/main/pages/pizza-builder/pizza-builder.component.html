@@ -5,18 +5,18 @@
     <h2>Створи свою власну піцу!</h2>
     <p>Для створення піци вибери розмір, соус, начинку, тип тіста. Для вибору представлені 4 розміра, 2 типа тіста, 10 начинок, 3 соуса</p>
 
-    <app-pizza-builder-block style="display: block; margin-top: 20px" [title]="'Розмір'" [maxSelect]="1" [options]="sizeOptions"></app-pizza-builder-block>
+    <app-pizza-builder-block (changed)="changed($event)" style="display: block; margin-top: 20px" [title]="'Розмір'" [maxSelect]="1" [options]="sizeOptions"></app-pizza-builder-block>
 
-    <app-pizza-builder-block style="display: block; margin-top: 20px" [title]="'Тип тіста'" [maxSelect]="1" [options]="crustOptions"></app-pizza-builder-block>
+    <app-pizza-builder-block (changed)="changed($event)" style="display: block; margin-top: 20px" [title]="'Тип тіста'" [maxSelect]="1" [options]="crustOptions"></app-pizza-builder-block>
 
-    <app-pizza-builder-block style="display: block; margin-top: 20px" [title]="'Соус'" [maxSelect]="1" [options]="sauceOptions"></app-pizza-builder-block>
+    <app-pizza-builder-block (changed)="changed($event)" style="display: block; margin-top: 20px" [title]="'Соус'" [maxSelect]="1" [options]="sauceOptions"></app-pizza-builder-block>
 
-    <app-pizza-builder-block style="display: block; margin-top: 20px" [title]="'Начинка'" [subtitle]="'Кожна начинка + 20 грн'" [maxSelect]="4" [options]="toppingsOptions"></app-pizza-builder-block>
+    <app-pizza-builder-block (changed)="changed($event)" style="display: block; margin-top: 20px" [title]="'Начинка'" [subtitle]="'Кожна начинка + 20 грн'" [maxSelect]="4" [options]="toppingsOptions"></app-pizza-builder-block>
 
   </div>
 
-  <button style="padding: 20px;background: #24262F; border-radius: 30px; margin-top: 20px; align-self: center" class="flex aic jcsb  pointer">
-    <span style="color: darkorange;font-size: 18px;margin-right: 50px">Додати до корзини</span>
-    <span style="color: white; font-size: 16px">400 грн</span>
+  <button (click)="s()" style="padding: 20px;background: darkorange; border-radius: 30px; margin-top: 20px; align-self: center" class="flex aic jcsb  pointer">
+    <span style="color: white;font-size: 18px;margin-right: 50px">Додати до корзини</span>
+    <span style="color: #1d1d1d; font-size: 17px">{{ cost }} грн</span>
   </button>
 </div>

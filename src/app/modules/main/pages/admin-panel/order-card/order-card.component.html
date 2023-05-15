@@ -1,12 +1,11 @@
-<div class="order-card">
-  <h2>Замовлення №1</h2>
-  <p>Київ, провулок політехнічний 6б, 14.05.2023 15:00</p>
-  <div class="flex fdc">
-    <app-cart-item [external]="true"></app-cart-item>
+<div *ngIf="order" class="order-card">
+  <h2>Замовлення №{{ no }}</h2>
+  <p>{{order.orderBody.name}} {{ order.orderBody.phone }} <br> {{ order.orderBody.city }} {{ order.orderBody.address }} <br> {{ order.orderBody.time | date :'short' }}</p>
+  <div *ngIf="pizzas.length" class="flex fdc">
+    <app-cart-item *ngFor="let pizza of pizzas" [pizza]="pizza" [external]="true"></app-cart-item>
 
-    <app-cart-item [external]="true"></app-cart-item>
-
-    <button class="button" style="align-self: flex-end">Підтвердити</button>
+    <button *ngIf="isAdmin" class="button" style="align-self: flex-end">Підтвердити</button>
+    <span style="align-self: flex-end; color: darkcyan; font-size: 20spx" *ngIf="!isAdmin">{{ order.status }}</span>
 <!--    <span style="color:darkcyan;align-self: flex-end">Підтверджено</span>-->
   </div>
 </div>

@@ -27,4 +27,15 @@ export class ApiService {
       'http://localhost:3000/pizzas/getPizza?pizzaId=' + pizzaId
     );
   }
+
+  createOrder(order: any): Observable<any> {
+    return this.http.post('http://localhost:3000/orders/createOrder', order);
+  }
+
+  getUserOrders(): Observable<any> {
+    return this.http.get(
+      'http://localhost:3000/orders/getUserOrders?userId=' +
+        localStorage.getItem('id')
+    );
+  }
 }
