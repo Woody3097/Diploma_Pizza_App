@@ -4,13 +4,12 @@
     <span style="position: absolute; top: 0; left: 50%; transform: translate3d(-50%, 10%, 0)">Кошик</span>
   </div>
 
-  <div style="margin-top: 30px" class="flex fdc">
-    <app-cart-item></app-cart-item>
-
-    <app-cart-item></app-cart-item>
-
-    <app-cart-item></app-cart-item>
+  <div *ngIf="cart.length;else noCart" style="margin-top: 30px" class="flex fdc">
+    <app-cart-item (countChanged)="updateCount($event)" (remove)="removeFromCart($event)" *ngFor="let item of cart" [pizza]="item" [value]="item.count"></app-cart-item>
+    <button class="cart__button pointer" routerLink="/ordering">Перейти до оформлення</button>
   </div>
-
-  <button class="cart__button pointer" routerLink="/ordering">Перейти до оформлення</button>
 </div>
+
+<ng-template #noCart>
+  <span style="margin-top: 16px;display:block;">Поки нічого немає :)</span>
+</ng-template>

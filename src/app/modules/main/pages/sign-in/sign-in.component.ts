@@ -32,6 +32,7 @@ export class SignInComponent {
       )
       .subscribe((res) => {
         if (res) {
+          debugger;
           localStorage.setItem('id', res.id);
           localStorage.setItem('email', res.email);
           localStorage.setItem('password', res.password);

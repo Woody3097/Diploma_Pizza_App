@@ -10,6 +10,8 @@ import { CartComponent } from './pages/cart/cart.component';
 import { PizzaBuilderComponent } from './pages/pizza-builder/pizza-builder.component';
 import { OrderingComponent } from './pages/ordering/ordering.component';
 import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
+import { AuthGuard } from './auth.guard';
+import { ProfileGuard } from './profile.guard';
 
 const routes: Routes = [
   {
@@ -19,6 +21,7 @@ const routes: Routes = [
       {
         path: 'home',
         component: HomeComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: 'sign-up',
@@ -31,26 +34,32 @@ const routes: Routes = [
       {
         path: 'profile',
         component: ProfileComponent,
+        canActivate: [AuthGuard, ProfileGuard],
       },
       {
-        path: 'pizza',
+        path: 'pizza/:id',
         component: PizzaComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: 'cart',
         component: CartComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: 'pizza-builder',
         component: PizzaBuilderComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: 'ordering',
         component: OrderingComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: 'admin',
         component: AdminPanelComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: '**',

@@ -2,29 +2,30 @@
 
   <div style="margin-bottom: 16px" class="home__nav flex aic jcsb">
     <h2 style="margin: 16px 0">Наявні піци</h2>
-    <input style="max-width: 500px" class="w100 home__search" type="text" placeholder="Пошук">
+    <input [(ngModel)]="input" (ngModelChange)="loadNewPizzas()" style="max-width: 500px" class="w100 home__search" type="text" placeholder="Пошук">
   </div>
 
   <div class="home__pizza-list flex">
-    <div (click)="openAddPizzaModal()" class="flex fdc jcc aic home__pizza-card pointer">
+    <div *ngIf="isAdmin" (click)="openAddPizzaModal()" class="flex fdc jcc aic home__pizza-card pointer">
       <h1>Додати нову піцу</h1>
     </div>
-
-    <div routerLink="/pizza" *ngFor="let a of [1,2,3]" class="flex fdc aic home__pizza-card pointer">
-      <div class="home__pizza-card-image">
-        <img src="assets/images/peperoni.png">
-      </div>
-      <div class="pizza__pizza-info">
-        <div class="w100 flex aic jcsb">
-          <span style="margin: 16px 0;align-self: flex-start;font-size: 22px;">Пепероні</span>
-          <mat-icon (click)="openBottomSheet($event)" class="pointer" style="color: darkorange">settings</mat-icon>
+    <ng-container *ngIf="(pizzas$ | async) as pizzas">
+      <div [routerLink]="'/pizza/' + a.id" *ngFor="let a of pizzas" class="flex fdc aic home__pizza-card pointer">
+        <div class="home__pizza-card-image">
+          <img [src]="'assets/images/' + (a.url || 'peperoni.png')">
         </div>
-        <div class="home__pizza-price w100 flex aic jcsb">
-          <span>200 грн</span>
-          <span (click)="$event.stopImmediatePropagation()" class="pointer home__pizza-cart"><mat-icon style="color: darkorange">add_shopping_cart</mat-icon></span>
+        <div class="pizza__pizza-info">
+          <div class="w100 flex aic jcsb">
+            <span style="margin: 16px 0;align-self: flex-start;font-size: 22px;">{{ a.name }}</span>
+            <mat-icon *ngIf="isAdmin" (click)="openBottomSheet($event)" class="pointer" style="color: darkorange">settings</mat-icon>
+          </div>
+          <div class="home__pizza-price w100 flex aic jcsb">
+            <span>{{ a.price }} грн</span>
+            <span *ngIf="!inCart(a.id)" (click)="$event.stopImmediatePropagation();addToCart(a)" class="pointer home__pizza-cart"><mat-icon style="color: darkorange">add_shopping_cart</mat-icon></span>
+            <span routerLink="/cart" *ngIf="inCart(a.id)" (click)="$event.stopImmediatePropagation();" class="pointer home__pizza-cart"><mat-icon style="color: green">shopping_cart</mat-icon></span>
+          </div>
         </div>
       </div>
-    </div>
-
+    </ng-container>
   </div>
 </div>

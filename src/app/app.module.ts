@@ -5,9 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthLocatorDirective } from './shared/auth-locator.directive';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, AuthLocatorDirective],
   imports: [
     BrowserModule,
     AppRoutingModule,

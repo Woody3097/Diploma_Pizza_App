@@ -1,37 +1,39 @@
-<div class="pizza" style="padding: 30px 20px;  height: 100%; border-radius: 20px">
+<div  class="pizza" style="padding: 30px 20px;  height: 100%; border-radius: 20px">
   <mat-icon class="pointer" style="color: #1d1d1d;" routerLink="/home">arrow_back</mat-icon>
+  <ng-container *ngIf="pizza$ | async as pizza">
+    <h2 style="margin: 16px 0;text-align: center">{{ pizza.name }}</h2>
+    <h4 style="margin-bottom: 30px;text-align: center">{{ pizza.price }} грн</h4>
 
-  <h2 style="margin: 16px 0;text-align: center">Пепероні</h2>
-  <h4 style="margin-bottom: 30px;text-align: center">200 грн</h4>
-
-  <div class="pizza__img">
-    <img src="assets/images/peperoni.png">
-  </div>
-
-  <div style="margin: 20px 0" class="flex aic jcsa">
-    <div style="width: 70px;" class="flex fdc aic">
-      <mat-icon>timelapse</mat-icon>
-      <span>20 хв</span>
+    <div class="pizza__img">
+      <img [src]="'assets/images/' + (pizza.url || 'peperoni.png')">
     </div>
 
-    <div style="width: 70px;" class="flex fdc aic">
-      <mat-icon> fastfood</mat-icon>
-      <span>400 ккал</span>
+    <div style="margin: 20px 0" class="flex aic jcsa">
+      <div style="width: 70px;" class="flex fdc aic">
+        <mat-icon>timelapse</mat-icon>
+        <span>{{ pizza.time }} хв</span>
+      </div>
+
+      <div style="width: 70px;" class="flex fdc aic">
+        <mat-icon> fastfood</mat-icon>
+        <span>{{ pizza.ccal }} ккал</span>
+      </div>
+
+      <div style="width: 70px;" class="flex fdc aic">
+        <mat-icon>inbox</mat-icon>
+        <span>{{ pizza.weight }} грам</span>
+      </div>
     </div>
 
-    <div style="width: 70px;" class="flex fdc aic">
-      <mat-icon>inbox</mat-icon>
-      <span>400 грам</span>
-    </div>
-  </div>
+    <p style="text-align: center">{{ pizza.description }}</p>
 
-  <p style="text-align: center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At commodi earum esse incidunt inventore maiores modi mollitia obcaecati quae saepe.</p>
+    <button *ngIf="!inCart(pizza.id)" (click)="addToCart(pizza)" class="button pointer" style="font-size: 16px;display: block; margin: 0 auto">Додати до кошика</button>
+    <button *ngIf="inCart(pizza.id)" routerLink="/cart" class="button pointer" style="font-size: 16px;display: block; margin: 0 auto; background: #1d1d1d">До кошика</button>
 
-  <button routerLink="/cart" class="pizza__button pointer">Додати до корзини</button>
-
-<!--  <span style="margin-bottom: 16px">Схожі піци</span>-->
-<!--  -->
-<!--  <div class="flex aic">-->
-<!--    <div *ng></div>-->
-<!--  </div>-->
+  <!--  <span style="margin-bottom: 16px">Схожі піци</span>-->
+  <!--  -->
+  <!--  <div class="flex aic">-->
+  <!--    <div *ng></div>-->
+  <!--  </div>-->
+  </ng-container>
 </div>

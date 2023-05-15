@@ -1,23 +1,25 @@
-<div style="padding: 20px 0" class="flex aic jcsb cart-item">
+<div *ngIf="pizza" style="padding: 20px 0" class="flex aic jcsb cart-item">
   <div class="flex aic">
-    <img width="80" height="80" src="assets/images/peperoni.png" style="margin-right: 16px">
+    <img width="80" height="80" [src]="'assets/images/' + (pizza.url || 'peperoni.png')" style="margin-right: 16px">
     <div class="flex fdc">
-      <span style="margin-bottom: 5px">Пепероні</span>
-      <span style="color: darkorange">200 грн</span>
+      <span style="margin-bottom: 5px">{{ pizza.name }}</span>
+      <span style="color: darkorange">{{ pizza.price }} грн</span>
     </div>
 
   </div>
 
   <div *ngIf="!external" class="flex aic">
     <div style="background: #F3F5F7;border: 1px solid #F1F1F5;border-radius: 50%;width: 36px; height: 36px;" class="flex aic jcc pointer">
-      <mat-icon style="color: #979899" (click)="value = value - 1">remove</mat-icon>
+      <mat-icon style="color: #979899" (click)="changeValue(value - 1)">remove</mat-icon>
     </div>
 
-    <input style="margin: 0 16px; font-size: 16px; background: none; border: none; text-align: center" min="0" max="100" type="number" [(ngModel)]="value">
+    <input disabled style="margin: 0 8px; font-size: 16px; background: none; border: none; text-align: center" min="0" max="100" type="number" [(ngModel)]="value">
 
     <div style="background: darkorange;border-radius: 50%;width: 36px; height: 36px;" class="flex aic jcc pointer">
-      <mat-icon style="color: white" (click)="value = value + 1">add</mat-icon>
+      <mat-icon style="color: white" (click)="changeValue(value + 1)">add</mat-icon>
     </div>
+
+    <mat-icon (click)="removeFromCart()" style="margin-left: 20px" class="pointer">close</mat-icon>
   </div>
 
   <div *ngIf="external">

@@ -15,4 +15,16 @@ export class ApiService {
   signIn(data: any): Observable<any> {
     return this.http.post('http://localhost:3000/users/signIn', data);
   }
+
+  getAllPizzas(input?: string): Observable<any> {
+    return this.http.get(
+      'http://localhost:3000/pizzas/getAllPizzas?search=' + input
+    );
+  }
+
+  getPizza(pizzaId: string): Observable<any> {
+    return this.http.get(
+      'http://localhost:3000/pizzas/getPizza?pizzaId=' + pizzaId
+    );
+  }
 }
