@@ -38,4 +38,32 @@ export class ApiService {
         localStorage.getItem('id')
     );
   }
+
+  getAllOrders(): Observable<any> {
+    return this.http.get('http://localhost:3000/orders/getAllOrders');
+  }
+
+  acceptOrder(id: number): Observable<any> {
+    return this.http.post('http://localhost:3000/orders/updateOrderStatus', {
+      id,
+    });
+  }
+
+  deletePizza(pizzaId: number): Observable<any> {
+    return this.http.post('http://localhost:3000/pizzas/deletePizza', {
+      id: pizzaId,
+    });
+  }
+
+  getPizzaItems(): Observable<any> {
+    return this.http.get('http://localhost:3000/pizzas/getPizzaItems');
+  }
+
+  createPizza(pizza: any): Observable<any> {
+    return this.http.post('http://localhost:3000/pizzas/createNewPizza', pizza);
+  }
+
+  updatePizza(pizza: any): Observable<any> {
+    return this.http.post('http://localhost:3000/pizzas/updatePizza', pizza);
+  }
 }

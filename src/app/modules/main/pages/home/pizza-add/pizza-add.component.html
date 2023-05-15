@@ -1,36 +1,40 @@
-<div style="padding: 20px" class="flex fdc">
-  <input type="text" class="input" placeholder="Назва">
-  <input style="margin-top: 16px" type="number" min="1" class="input" placeholder="Ціна">
-  <input style="margin-top: 16px" type="number" min="1" class="input" placeholder="Час приготування (хв)">
-  <input style="margin-top: 16px" type="number" min="1" class="input" placeholder="Кілокалорії (ккал)">
-  <input style="margin-top: 16px" type="number" min="1" class="input" placeholder="Вага (грам)">
-  <label style="margin-top: 16px" for="size">Розмір</label>
-  <select name="size" id="size" style="margin-top: 5px" class="input pointer">
-    <option value="20 см">20 см</option>
-    <option value="25 см">25 см</option>
-    <option value="30 см">30 см</option>
-    <option value="40 см">40 см</option>
+<div *ngIf="items" style="padding: 20px" class="flex fdc">
+  <input [(ngModel)]="pizza.name" type="text" class="input" placeholder="Назва">
+  <input [(ngModel)]="pizza.url" style="margin-top: 16px" type="text" class="input" placeholder="Url">
+  <input [(ngModel)]="pizza.price" style="margin-top: 16px" type="number" min="1" class="input" placeholder="Ціна">
+  <input [(ngModel)]="pizza.time" style="margin-top: 16px" type="number" min="1" class="input" placeholder="Час приготування (хв)">
+  <input [(ngModel)]="pizza.ccal" style="margin-top: 16px" type="number" min="1" class="input" placeholder="Кілокалорії (ккал)">
+  <input [(ngModel)]="pizza.weight" style="margin-top: 16px" type="number" min="1" class="input" placeholder="Вага (грам)">
+  <label  style="margin-top: 16px" for="size">Розмір</label>
+  <select [(ngModel)]="pizza.size" name="size" id="size" style="margin-top: 5px" class="input pointer">
+    <option *ngFor="let size of items.sizes" [value]="$any(size).value">{{ $any(size).value }}</option>
+<!--    <option value="20 см">20 см</option>-->
+<!--    <option value="25 см">25 см</option>-->
+<!--    <option value="30 см">30 см</option>-->
+<!--    <option value="40 см">40 см</option>-->
   </select>
 
   <label style="margin-top: 16px" for="sauce">Соус</label>
-  <select name="sauce" id="sauce" style="margin-top: 5px" class="input pointer">
-    <option value="Барбек'ю">Барбек'ю</option>
-    <option value="Томатний">Томатний</option>
-    <option value="Часниковий">Часниковий</option>
+  <select [(ngModel)]="pizza.sauce" name="sauce" id="sauce" style="margin-top: 5px" class="input pointer">
+    <option *ngFor="let sauce of items.sauces" [value]="$any(sauce).name">{{ $any(sauce).name }}</option>
+<!--    <option value="Барбек'ю">Барбек'ю</option>-->
+<!--    <option value="Томатний">Томатний</option>-->
+<!--    <option value="Часниковий">Часниковий</option>-->
   </select>
 
   <label style="margin-top: 16px" for="topping">Начинка</label>
   <select (change)="addTopping($any($event.target).value)" name="topping" id="topping" style="margin-top: 5px" class="input pointer">
     <option disabled selected> -- Виберіть начинку -- </option>
-    <option value="Барбек'ю">Барбек'ю</option>
-    <option value="Томатний">Томатний</option>
+    <option *ngFor="let ingredient of items.ingredients" [value]="$any(ingredient).name">{{ $any(ingredient).name }}</option>
+<!--    <option value="Барбек'ю">Барбек'ю</option>-->
+<!--    <option value="Томатний">Томатний</option>-->
   </select>
 
   <div class="flex aic" style="flex-wrap: wrap">
-    <span class="flex aic" *ngFor="let a of toppings;let i = index">{{ a }} <mat-icon class="pointer" (click)="removeTopping(i)">close</mat-icon></span>
+    <span class="flex aic" *ngFor="let a of pizza.ingredients;let i = index">{{ a }} <mat-icon class="pointer" (click)="removeTopping(i)">close</mat-icon></span>
   </div>
 
-  <input style="margin-top: 16px" type="text" class="input" placeholder="Опис">
+  <input [(ngModel)]="pizza.description" style="margin-top: 16px" type="text" class="input" placeholder="Опис">
 
-  <button class="button" (click)="createPizza()" style="margin-top: 16px">Створити</button>
+  <button class="button" *ngIf="canCreate()" (click)="createPizza()" style="margin-top: 16px">{{this.data ? 'Оновити' : 'Створити'}}</button>
 </div>

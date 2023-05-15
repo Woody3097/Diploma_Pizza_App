@@ -1,20 +1,24 @@
 <div style="margin: 30px 20px">
-  <div class="w100 flex aic jcsb" style="max-width: 100%; overflow-x: auto">
-    <span (click)="setMode('Orders')" class="pointer" [class.active-item]="mode === 'Orders'">Замовлення</span>
-    <span (click)="setMode('Menu')" class="pointer" [class.active-item]="mode === 'Menu'">Меню</span>
-    <span (click)="setMode('Statistics')" class="pointer" [class.active-item]="mode === 'Statistics'">Статистика</span>
+<!--  <div class="w100 flex aic jcsb" style="max-width: 100%; overflow-x: auto">-->
+<!--    <span (click)="setMode('Orders')" class="pointer" [class.active-item]="mode === 'Orders'">Замовлення</span>-->
+<!--    <span (click)="setMode('Menu')" class="pointer" [class.active-item]="mode === 'Menu'">Меню</span>-->
+<!--    <span (click)="setMode('Statistics')" class="pointer" [class.active-item]="mode === 'Statistics'">Статистика</span>-->
+<!--  </div>-->
+
+  <div class="flex aic jcsb" style="margin-bottom: 16px">
+    <mat-icon class="pointer" routerLink="/home">arrow_back</mat-icon>
+
+    <mat-icon class="pointer" routerLink="/sign-in" (click)="signOut()">exit_to_app</mat-icon>
   </div>
 
-  <div *ngIf="mode === 'Orders'">
+  <div *ngIf="orders$ | async as orders">
     <div class="flex fdc">
-      <app-order-card></app-order-card>
-
-      <app-order-card></app-order-card>
+      <app-order-card (accept)="acceptOrder(order.id)" [no]="i + 1" [order]="order" *ngFor="let order of orders; let i = index"></app-order-card>
     </div>
   </div>
 
-  <div *ngIf="mode === 'Menu'">sdf2</div>
+<!--  <div *ngIf="mode === 'Menu'">sdf2</div>-->
 
-  <div *ngIf="mode === 'Statistics'">sdf3</div>
+<!--  <div *ngIf="mode === 'Statistics'">sdf3</div>-->
 </div>
 

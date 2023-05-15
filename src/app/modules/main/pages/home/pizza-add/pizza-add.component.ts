@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
-import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
+import { Component, Inject } from '@angular/core';
+import {
+  MAT_BOTTOM_SHEET_DATA,
+  MatBottomSheetRef,
+} from '@angular/material/bottom-sheet';
+import { ApiService } from '../../../api/api.service';
 
 @Component({
   selector: 'app-pizza-add',
@@ -7,28 +11,106 @@ import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
   styleUrls: ['./pizza-add.component.scss'],
 })
 export class PizzaAddComponent {
-  toppings: string[] = [];
-  constructor(private _bottomSheetRef: MatBottomSheetRef<PizzaAddComponent>) {}
+  pizza: any = {
+    name: '',
+    url: '',
+    price: '',
+    time: '',
+    ccal: '',
+    weight: '',
+    size: '20 см',
+    sauce: 'Томатний',
+    ingredients: [],
+    description: '',
+  };
+
+  items: any;
+  constructor(
+    private _bottomSheetRef: MatBottomSheetRef<PizzaAddComponent>,
+    private api: ApiService,
+    @Inject(MAT_BOTTOM_SHEET_DATA) public data: any
+  ) {
+    if (data) {
+      data.ingredients = data.ingredients.map((i: any) => i.name);
+      data.sauce = data.sauceId.name;
+      data.size = data.sizeId.value;
+      this.pizza = data;
+    }
+    api.getPizzaItems().subscribe((res) => {
+      this.items = res;
+    });
+  }
+
+  transform() {
+    // this.pizza.toppings = this.pizza.toppings.map((el: any) => {
+    //   return this.items.ingredients.find((i: any) => i.name === el);
+    // });
+
+    this.pizza.sizeId = this.items.sizes.find(
+      (i: any) => i.value === this.pizza.size
+    ).id;
+
+    this.pizza.sauceId = this.items.sauces.find(
+      (i: any) => i.name === this.pizza.sauce
+    ).id;
+  }
+
+  transformS() {
+    this.pizza.ingredients = this.pizza.ingredients.map((el: any) => {
+      return { id: this.items.ingredients.find((i: any) => i.name === el).id };
+    });
+
+    this.pizza.sizeId = this.items.sizes.find(
+      (i: any) => i.value === this.pizza.size
+    ).id;
+
+    this.pizza.sauceId = this.items.sauces.find(
+      (i: any) => i.name === this.pizza.sauce
+    ).id;
+  }
+
   createPizza(): void {
-    this._bottomSheetRef.dismiss();
+    if (this.data) {
+      this.transformS();
+      delete this.pizza.size;
+      delete this.pizza.sauce;
+      this.api.updatePizza(this.pizza).subscribe((res) => {
+        this._bottomSheetRef.dismiss(res);
+      });
+    } else {
+      this.transform();
+      this.api.createPizza(this.pizza).subscribe((res) => {
+        this._bottomSheetRef.dismiss(res);
+      });
+    }
   }
 
   addTopping(topping: string): void {
     (
       document.getElementById('topping')! as HTMLSelectElement
     ).selectedIndex = 0;
-    if (this.toppings.includes(topping)) {
+    if (this.pizza.ingredients.includes(topping)) {
       return;
     }
-    this.toppings.push(topping);
+    this.pizza.ingredients.push(topping);
   }
 
   removeTopping(index: number): void {
-    if (index === 0) {
-      this.toppings.shift();
-      return;
-    }
+    this.pizza.ingredients = this.pizza.ingredients.filter(
+      (el: string, i: number) => i !== index
+    );
+  }
 
-    this.toppings = this.toppings.splice(index, 1);
+  canCreate(): boolean {
+    return (
+      this.pizza.name.length &&
+      this.pizza.price > 1 &&
+      this.pizza.time > 1 &&
+      this.pizza.ccal > 1 &&
+      this.pizza.weight > 1 &&
+      this.pizza.sauce.length &&
+      this.pizza.size.length &&
+      this.pizza.ingredients.length
+    );
   }
 }

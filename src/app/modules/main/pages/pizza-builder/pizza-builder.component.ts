@@ -41,7 +41,7 @@ export class PizzaBuilderComponent {
 
   sauceOptions: any[] = [
     {
-      name: "Барбек'ю",
+      name: 'Барбекю',
     },
     {
       name: 'Томатний',

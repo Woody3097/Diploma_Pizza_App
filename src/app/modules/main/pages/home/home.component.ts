@@ -4,7 +4,7 @@ import { PizzaCrudComponent } from './pizza-crud/pizza-crud.component';
 import { PizzaAddComponent } from './pizza-add/pizza-add.component';
 import { AuthLocatorDirective } from '../../../../shared/auth-locator.directive';
 import { ApiService } from '../../api/api.service';
-import { interval, Observable, of } from 'rxjs';
+import { filter, interval, map, Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -23,13 +23,30 @@ export class HomeComponent extends AuthLocatorDirective {
     this.pizzas$ = this.api.getAllPizzas(this.input);
   }
 
-  openBottomSheet(event: any): void {
+  openBottomSheet(event: any, pizza: any): void {
     event.stopImmediatePropagation();
-    this._bottomSheet.open(PizzaCrudComponent);
+    this._bottomSheet
+      .open(PizzaCrudComponent, { data: pizza })
+      .afterDismissed()
+      .subscribe((res) => {
+        if (res) {
+          this.pizzas$ = this.pizzas$?.pipe(
+            filter((el: any) => el.id !== pizza.id)
+          );
+        }
+      });
   }
 
   openAddPizzaModal(): void {
-    this._bottomSheet.open(PizzaAddComponent);
+    this._bottomSheet
+      .open(PizzaAddComponent)
+      .afterDismissed()
+      .subscribe((res) => {
+        if (res) {
+          location.reload();
+        }
+        // this.pizzas$ = this.pizzas$?.pipe(map((el: any) => [...el, res]));
+      });
   }
 
   addToCart(pizza: any): void {

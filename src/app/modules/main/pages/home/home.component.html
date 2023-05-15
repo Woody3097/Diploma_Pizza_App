@@ -17,7 +17,7 @@
         <div class="pizza__pizza-info">
           <div class="w100 flex aic jcsb">
             <span style="margin: 16px 0;align-self: flex-start;font-size: 22px;">{{ a.name }}</span>
-            <mat-icon *ngIf="isAdmin" (click)="openBottomSheet($event)" class="pointer" style="color: darkorange">settings</mat-icon>
+            <mat-icon *ngIf="isAdmin" (click)="openBottomSheet($event, a)" class="pointer" style="color: darkorange">settings</mat-icon>
           </div>
           <div class="home__pizza-price w100 flex aic jcsb">
             <span>{{ a.price }} грн</span>

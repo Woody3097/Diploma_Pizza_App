@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AuthLocatorDirective } from '../../../../../shared/auth-locator.directive';
 
 @Component({
@@ -9,6 +9,7 @@ import { AuthLocatorDirective } from '../../../../../shared/auth-locator.directi
 export class OrderCardComponent extends AuthLocatorDirective {
   @Input() order?: any;
   @Input() no!: number;
+  @Output() accept: EventEmitter<any> = new EventEmitter<any>();
   pizzas: any[] = [];
   constructor() {
     super();

@@ -4,8 +4,11 @@
   <div *ngIf="pizzas.length" class="flex fdc">
     <app-cart-item *ngFor="let pizza of pizzas" [pizza]="pizza" [external]="true"></app-cart-item>
 
-    <button *ngIf="isAdmin" class="button" style="align-self: flex-end">Підтвердити</button>
-    <span style="align-self: flex-end; color: darkcyan; font-size: 20spx" *ngIf="!isAdmin">{{ order.status }}</span>
+    <button *ngIf="isAdmin && order.status === 'Очікування'" (click)="accept.emit(); order.status = 'Підтверджено'" class="button" style="align-self: flex-end">Підтвердити</button>
+
+    <span style="align-self: flex-end; color: darkcyan; font-size: 20px" *ngIf="isAdmin && order.status === 'Підтверджено'">{{ order.status }}</span>
+
+    <span style="align-self: flex-end; color: darkcyan; font-size: 20px" *ngIf="!isAdmin">{{ order.status }}</span>
 <!--    <span style="color:darkcyan;align-self: flex-end">Підтверджено</span>-->
   </div>
 </div>
